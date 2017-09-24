@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+    body{
+      background-color: gray;
+    }
+    #ground{
+      border:0.2cm solid black;
+      width: 800px;
+      height: 400px;
+      background-image:url(e31584d4d5cdbf951a853013d4836d2b.jpg);
+      position: absolute;
+      margin-top:2cm;
+      margin-left:6.5cm;
+    }
+    .position{
+      position: absolute;
+      left:571px;
+      top:279px;
+      border:0.1cm solid black;
+      height:28px;
+      width:150px;
+    }
+    .word1{
+      position: absolute;
+      left:4cm;
+      top:5.8cm;
+      font-size:15px;
+    }
+    .word2{
+      position: absolute;
+      left:4cm;
+      top:7.15cm;
+      font-size:15px;
+    }
+    .word3{
+      position: absolute;
+      left:13cm;
+      top:7.15cm;
+      font-size:15px;
+    }
+    .block1{
+      position:absolute;
+      left:7cm;
+      top:6cm;
+      width:5cm;
+      height:0.5cm;
+      border:0.2cm solid gray;
+    }
+    .block2{
+      position:absolute;
+      left:7cm;
+      top:7.3cm;
+      width:5cm;
+      height:0.5cm;
+      border:0.2cm solid gray;
+    }
+    #block3{
+      position:absolute;
+      left:7cm;
+      top:8.7cm;
+      width:3cm;
+      height:1cm;
+      border:0.2cm solid gray;
+    }
+    .green{
+      width: 50px;
+      height: 28px;
+      background: green;
+      position: absolute;
+      top: 60px;
+    }
+    .yellow{
+      width: 50px;
+      height: 28px;
+      background: yellow;
+      position: absolute;
+      top: 60px;
+    }
+    .red{
+      width: 50px;
+      height: 28px;
+      background: red;
+      position: absolute;
+      top: 60px;
+    }
+    
+    input.oo{color:black;}
+    input.oo:link{color:gray;text-decoration: none;}
+    input.oo:hover{background-color:dodgerblue;color:white;}
+    
+</style>
+
+</head>
+<body>
+
+<div id="ground">
+<div class="position"></div>
+
+<p class="word1"><i>请输入用户名&nbsp;:</i></p>
+<p class="word2"><i>请输入密码&nbsp;:</i></p>
+<p class="word3"><i>密码强度&nbsp;:</i></p>
+
+<form>
+
+	<input class="block1" type="text" name="" id="name"><br>
+  <input class="block2" type="text" name="" id="code">
+  <input class="oo" id="block3" type="button" onclick="check()" value="提  交">
+
+</form>
+</div>
+
+<script>
+
+  var quan1;
+  var quan2;
+  function check(){
+	var name=document.getElementById("name").value;
+	var name1 =new RegExp("^[a-zA-Z0-9\*]{1,24}$");//检验用户名的正则表达式
+  var code=document.getElementById("code").value;
+  var code1 =new RegExp("^[a-zA-Z0-9\*\?]{1,12}$");//检验密码的正则表达式
+  var d=name1.test(name);
+  var t=code1.test(code);
+
+  
+	if(name1.test(name)&&code1.test(code))
+  {
+		alert("匹配成功");
+	}
+	else 
+  {
+	  alert("匹配失败");
+	}
+
+  var aa=document.getElementById("code").value;
+  var bb=aa.length;
+  var cc;
+  var dd=0;
+  var ee=0;
+  var ff=0;
+
+  for(cc=0;cc<bb;cc++)//此处用于下检验密码的强度；检验完毕后请刷新页面；否则密码强度不能够自动刷新。
+    {
+
+   if(aa[cc]=="a"||aa[cc]=="b"||aa[cc]=="c"||aa[cc]=="d"||aa[cc]=="e"||aa[cc]=="f"||aa[cc]=="g"||aa[cc]=="h"||
+      aa[cc]=="i"||aa[cc]=="j"||aa[cc]=="k"||aa[cc]=="l"||aa[cc]=="m"||aa[cc]=="n"||aa[cc]=="o"||aa[cc]=="p"||
+      aa[cc]=="q"||aa[cc]=="r"||aa[cc]=="s"||aa[cc]=="t"||aa[cc]=="u"||aa[cc]=="v"||aa[cc]=="w"||aa[cc]=="x"||
+      aa[cc]=="y"||aa[cc]=="z"||aa[cc]=="A"||aa[cc]=="B"||aa[cc]=="C"||aa[cc]=="D"||aa[cc]=="E"||aa[cc]=="F"||
+      aa[cc]=="G"||aa[cc]=="H"||aa[cc]=="I"||aa[cc]=="J"||aa[cc]=="K"||aa[cc]=="L"||aa[cc]=="M"||aa[cc]=="N"||
+      aa[cc]=="O"||aa[cc]=="P"||aa[cc]=="Q"||aa[cc]=="R"||aa[cc]=="S"||aa[cc]=="T"||aa[cc]=="U"||aa[cc]=="V"||
+      aa[cc]=="W"||aa[cc]=="X"||aa[cc]=="Y"||aa[cc]=="Z")
+    {
+      dd=1;
+    }
+
+    if(aa[cc]=="0"||aa[cc]=="1"||aa[cc]=="2"||aa[cc]=="3"||aa[cc]=="4"||aa[cc]=="5"||aa[cc]=="6"||aa[cc]=="7"||
+      aa[cc]=="8"||aa[cc]=="9")
+    {
+      ee=1;
+    }
+
+    if(aa[cc]=="*"||aa[cc]=="?")
+    {
+      ff=1;
+    }
+  }
+
+  if(dd||ee||ff){
+    var ground = document.getElementById('ground');
+    var greenBody = [];
+      var div = document.createElement('div');
+      div.className = "green";
+      div.style.left = 575 + 'px';
+      div.style.top = 283 + 'px';
+      ground.appendChild(div);               
+  }
+
+  if((dd&&ee)||(dd&&ff)||(ee&&ff)){
+    var ground = document.getElementById('ground');
+    var yellowBody = [];
+      var div = document.createElement('div');
+      div.className = "yellow";
+      div.style.left = 625 + 'px';
+      div.style.top = 283 + 'px';
+      ground.appendChild(div);               
+  }
+
+  if(dd&&ee&&ff){
+    var ground = document.getElementById('ground');
+    var redBody = [];
+      var div = document.createElement('div');
+      div.className = "red";
+      div.style.left = 675 + 'px';
+      div.style.top = 283 + 'px';
+      ground.appendChild(div);               
+  }
+}
+
+</script>
+</body>
+</html>
+<!--提交栏的用户名输入限制为：小于等于24个字符但字符个数不能为零，可输入字符为字母数字或'*'。
+    密码输入限制为小于等于12个字符但字符个数不能为零，可输入字符为字母数字'*'和英文状态下的'?'
+
+    密码强度的显示：密码可输入的字符为1.密码，2.数字，3.'*'和'?',分为三类。只输入这三类中的一类，
+    密码强度会出现一个绿色的格子;输入这三类中的其中两类，则会出现一个绿色格子和一个黄色格子；三类
+    全部都有输入，则会出现绿黄红三种颜色的格子。另外只有点击提交之后才会显示密码的强度;显示完密码
+    强度后请刷新网页再接着测试。
+    -->
+

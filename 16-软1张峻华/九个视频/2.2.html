@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	    div{
+	    	width:200px;
+			height:100px;
+			float:right;/*浮动的元素会导致空间释放*/
+			/*display:inline-block;/*行级元素不能设置宽和高,inline-block可以设置宽和高*/
+	    }
+		#div1{
+			background: red;
+			float:left;
+			/*position:;
+			left:px;
+			top:px;*/
+		}
+		#div2{
+			width:300px;
+			background: red;
+			float:left;
+			/*position:/*relative*/fixed;/*relative相对定位不会释放空间，absolute绝对定位会释放空间*/
+			/*right:0px;/*fixed是相对于浏览器*/
+			/*top:200px;*/
+		}
+		#div3{
+			background: red;
+			clear:both;/*clear可以让一个元素禁止浮动*/
+		}
+		#main{             /*绝对定位找他离他最近的定位的父元素，直到找到body*/
+			width:700px;
+			height:500px;
+			background:gray;
+			/*position:absolute;
+			left:50px;
+			top:50px;*/
+		}
+		/*a,span{
+			background: yellow;
+			width:200px;
+			height:100px;
+			display: block;
+		}*/
+	</style>
+</head>
+<style type="text/css">
+	
+</style>
+<body>
+     <div id="main">
+     <div id="div1">div1</div>
+     <div id="div2">div2</div>
+     <div id="div3">div3</div>
+     </div>
+
+     <!--<a href="#">aaaaa</a>
+     <span>2345678</span>-->
+</body>
+</html>s
